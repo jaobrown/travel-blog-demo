@@ -20,7 +20,7 @@ export default () => (
               featuredImage {
                 fluid(maxWidth: 1200, quality: 85) {
                   src
-                  ...GatsbyContentfulFluid
+                  ...GatsbyContentfulFluid_tracedSVG
                 }
               }
             }
