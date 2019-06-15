@@ -76,10 +76,10 @@ const getArchive = makeRequest(graphql, `
            skip: i * blogsPerPage,
            numPages,
            currentPage: i + 1,
-         }
+         },
        })
      })
-   })
+   });
 
 // create the Travel category page
 const getTravel = makeRequest(graphql, `
@@ -106,7 +106,7 @@ const getTravel = makeRequest(graphql, `
 
   Array.from({ length: numPages }).forEach((_, i) => {
     createPage({
-      path: i === 0 ? `/category/travel` : `/category/travel${i + 1}`,
+      path: i === 0 ? `/category/travel` : `/category/travel/${i + 1}`,
       component: path.resolve("./src/templates/travel.jsx"),
       context: {
         limit: blogsPerPage,
