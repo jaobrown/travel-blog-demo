@@ -37,7 +37,7 @@ exports.createPages = ({ actions, graphql }) => {
    result.data.allContentfulBlog.edges.forEach(({ node }) => {
      createPage({
        path: `blog/${node.slug}`,
-       component: path.resolve(`src/templates/blog.jsx`),
+       component: path.resolve(`src/templates/blog.js`),
        context: {
          id: node.id,
        },
@@ -70,7 +70,7 @@ const getArchive = makeRequest(graphql, `
      Array.from({ length: numPages }).forEach((_, i) => {
        createPage({
          path: i === 0 ? `/blog` : `/blog/${i + 1}`,
-         component: path.resolve("./src/templates/archive.jsx"),
+         component: path.resolve("./src/templates/archive.js"),
          context: {
            limit: blogsPerPage,
            skip: i * blogsPerPage,
@@ -107,7 +107,7 @@ const getTravel = makeRequest(graphql, `
   Array.from({ length: numPages }).forEach((_, i) => {
     createPage({
       path: i === 0 ? `/category/travel` : `/category/travel/${i + 1}`,
-      component: path.resolve("./src/templates/travel.jsx"),
+      component: path.resolve("./src/templates/travel.js"),
       context: {
         limit: blogsPerPage,
         skip: i * blogsPerPage,
@@ -144,7 +144,7 @@ const getGuide = makeRequest(graphql, `
   Array.from({ length: numPages }).forEach((_, i) => {
     createPage({
       path: i === 0 ? `/category/guide` : `/category/guide${i + 1}`,
-      component: path.resolve("./src/templates/guide.jsx"),
+      component: path.resolve("./src/templates/guide.js"),
       context: {
         limit: blogsPerPage,
         skip: i * blogsPerPage,
@@ -181,7 +181,7 @@ const getTech = makeRequest(graphql, `
   Array.from({ length: numPages }).forEach((_, i) => {
     createPage({
       path: i === 0 ? `/category/tech` : `/category/tech${i + 1}`,
-      component: path.resolve("./src/templates/tech.jsx"),
+      component: path.resolve("./src/templates/tech.js"),
       context: {
         limit: blogsPerPage,
         skip: i * blogsPerPage,
@@ -218,7 +218,7 @@ const getOpinion = makeRequest(graphql, `
   Array.from({ length: numPages }).forEach((_, i) => {
     createPage({
       path: i === 0 ? `/category/opinion` : `/category/opinion${i + 1}`,
-      component: path.resolve("./src/templates/opinion.jsx"),
+      component: path.resolve("./src/templates/opinion.js"),
       context: {
         limit: blogsPerPage,
         skip: i * blogsPerPage,
