@@ -9,18 +9,18 @@ import './archive.css'
 
 import headerImage from '../images/general-header-image.jpg'
 
-const Archive = (props) => {
+const Opinion = (props) => {
   const blogContent = props.data.allContentfulBlog
   const { currentPage, numPages } = props.pageContext
   const isFirst = currentPage === 1
   const isLast = currentPage === numPages
-  const prevPage = currentPage - 1 === 1 ? '/blog' : `/blog/${currentPage - 1}`
-  const nextPage = `/blog/${currentPage + 1}`
+  const prevPage = currentPage - 1 === 1 ? '/category/opinion' : `/category/opinion${currentPage - 1}`
+  const nextPage = `/category/opinion${currentPage + 1}`
 
   return (
     <Layout>
       <SEO
-        title="blog"
+        title="Opinions"
         keywords={['travel', 'travel blog', 'travel photography']}
       />
       <Nav />
@@ -129,13 +129,16 @@ const Archive = (props) => {
   )
 }
 
-export default Archive
+export default Opinion
 
 export const pageQuery = graphql`
-  query ArchiveQuery($skip: Int!, $limit: Int!) {
+  query OpinionQuery($skip: Int!, $limit: Int!) {
     allContentfulBlog(
       sort: { fields: [createdAt], order: DESC }
-      filter: { node_locale: { eq: "en-US" } }
+      filter: { 
+        node_locale: { eq: "en-US" },
+        category: {elemMatch: {title: {eq: "Opinion"}}}
+      }
       skip: $skip
       limit: $limit
     ) {
